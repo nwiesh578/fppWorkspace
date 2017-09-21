@@ -20,7 +20,7 @@ public class MyStringLinkedList {
 		}
 	}
 
-// Implement the code
+
 
 	public void addLast(String item) {
 		
@@ -36,15 +36,14 @@ public class MyStringLinkedList {
 	}
 
 
-	// implement the code
+	
 	public void postAddNode(Node n, String value){
 		Node newNode;
 		if (n == null){
-			//List is empty
+			
 			newNode = new Node(null, value, null);
 		}
 		else if (n.next == null) {
-			//n is the first node
 			addLast(value);
 		}
 		else {
@@ -126,14 +125,24 @@ public class MyStringLinkedList {
 		}
 	} 
 	
-	/*public void printMax(){
-		Node max = new Node();
-		max.value = null;
-		for (Node i= header; i != null; i=i.next){
-	   		if(i.value.equals(i.next.value))
-	   			max.value = i.value;
+	public void printMax(){
+		
+		String a=header.value;
+		for (Node i= header; i.next != null; i=i.next){
+	   		if(a.compareToIgnoreCase(i.value) < 0)
+	   			a = i.value;
 	   		}
-	   	} */
+		System.out.println(a);
+} 
+	public void printMin(){
+		
+		String a=header.value;
+		for (Node i= header; i.next != null; i=i.next){
+	   		if(a.compareToIgnoreCase(i.value) > 0)
+	   			a = i.value;
+	   		}
+		System.out.println(a);
+} 
 	
 	public Node findLast() {
 		if (header == null)
@@ -144,9 +153,7 @@ public class MyStringLinkedList {
 				temp = temp.next;
 			return temp;
 		} 
-		
-		
-		
+				
 	}
 
 	public Node findItem(String str) {
@@ -226,12 +233,6 @@ public class MyStringLinkedList {
 		return print(n.next,str);
 	}
 	
-	/*public void  print(Node n) {
-		if (header == null) return;
-		System.out.println("Recursive display of nodes"+print(n));
-		n= n.next;
-	}*/
-
 	public void printReverse() {
 		String str =""; 
 		Node temp = findLast();
@@ -263,6 +264,9 @@ public class MyStringLinkedList {
 		}
 	}
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		MyStringLinkedList mySL = new MyStringLinkedList();
 		System.out.println(mySL);
@@ -316,6 +320,14 @@ public class MyStringLinkedList {
 		mySL.print(mySL.header);
 		
 		System.out.println("");
+		System.out.print("Max value : ");
+		mySL.printMax();
+		
+		System.out.println("");
+		System.out.print("Min value : ");
+		mySL.printMin();
+		
+		System.out.println("");
 		System.out.println("");
 		
 		System.out.println("Pre-Present MyStringLinkedList function calls");
@@ -366,7 +378,6 @@ public class MyStringLinkedList {
 
 }
 
-
 /*		Output
 	
 			-->[NULL]
@@ -402,6 +413,10 @@ public class MyStringLinkedList {
 			Recursively displaying
 			-->[Carrot Cake]-->[Fruit Cake]-->[Muffin]-->[Cup cake]-->[NULL]
 
+			Max value : Muffin
+
+			Min value : Carrot Cake
+
 
 			Pre-Present MyStringLinkedList function calls
 			==>[Cup cake]==>[Muffin]==>[Fruit Cake]==>[Carrot Cake]==>[NULL]
@@ -436,6 +451,4 @@ public class MyStringLinkedList {
 			==>[Peach Sauce]==>[Orange Juice]==>[Mango Smoothie]==>[Cup cake]==>[Muffin]==>[Fruit Cake]==>[Carrot Cake]==>[Danish Delight]==>[Carrot Cake]==>[Blueberry Muffin]==>[Apple Pie]==>[NULL]
 			-->[NULL]
 			==>[NULL]
-
 */
-	
